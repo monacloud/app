@@ -1,0 +1,30 @@
+{
+  "name": "monacloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "watch:styles": "tailwindcss -i ./src/styles/index.css -o ./public/index.css --watch",
+    "dev": "nodemon dist/index.js",
+    "start": "node dist/index.js",
+    "build": "tsc -p . && tailwindcss -i ./src/styles/index.css -o ./public/index.css --minify"
+  },
+  "keywords": [],
+  "author": "AbhinavRajesh",
+  "devDependencies": {
+    "@types/ejs": "^3.1.2",
+    "@types/express": "^4.17.9",
+    "@types/node": "^14.14.14",
+    "nodemon": "^2.0.6",
+    "tailwindcss": "^3.3.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  }
+}
