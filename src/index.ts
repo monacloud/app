@@ -1,14 +1,14 @@
 import express from "express";
 import ejs from "ejs";
 import path from "node:path";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-console.log(process.env.PORT, process.env.HOST)
+console.log(process.env.PORT, process.env.HOST);
 
 const PORT = (process.env.PORT ?? 8080) as number;
-const HOST = process.env.HOST ?? "0.0.0.0"
+const HOST = process.env.HOST ?? "0.0.0.0";
 
 const main = async () => {
   const app = express();
