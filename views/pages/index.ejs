@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head.ejs", { title: "MonaCloud", description: "Very cool description" }); %>
+  </head>
+  <body>
+    <main
+      class="monacloud__wrapper relative h-full w-full min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <section
+        class="h-full container mx-auto px-[32px] md:px-[64px] lg:px-[120px] flex items-center justify-center flex-col pb-[240px] relative"
+      >
+        <h1 class="z-[10] font-extrabold text-[48px] leading-[48px] md:text-[72px] text-white md:leading-[72px]">
+          <span class="monacloud__gradient_text">Mona</span>Cloud
+        </h1>
+        <p class="text-center text-[18px] font-medium md:text-[24px] text-white mt-[8px]">
+          Helping Mona get to the skies
+        </p>
+      </section>
+      <div
+        class="absolute bottom-[18%] right-[20%] md:right-[40%] translate-x-[50%] translate-y-[40%] z-[1]"
+      >
+        <img
+          src="images/mona-on-spaceship.png"
+          alt="Mona on spaceship"
+          class="animate-[bounce_3s_infinite]"
+        />
+      </div>
+      <div class="absolute left-[5%] md:left-[10%] bottom-[35%] md:bottom-[40%] lg:bottom-0 lg:top-[20%]">
+        <div class="relative flex items-center justify-center">
+          <img
+            src="images/bewitchedtocat.png"
+            alt="Bewichedtocat"
+            height="120px"
+            width="120px"
+            class="z-[2]"
+          />
+          <div
+            class="absolute h-full w-full rounded-full bg-[#FFFAD0] animate-pulse scale-75 blur-2xl"
+          ></div>
+        </div>
+      </div>
+      <div class="absolute scale-75 md:scale-100 right-[0] md:right-[5%] top-[20%] md:top-[25%] -translate-y-1/2">
+        <img
+          src="images/mona-spacewalking-with-spaceship.png"
+          alt="Mona spacewalking with spaceship"
+          class="animate-[bounce2_8s_infinite]"
+        />
+      </div>
+      <div
+        class="hidden lg:block absolute bottom-0 left-0 -translate-y-[120%] translate-x-[120%]"
+      >
+        <img
+          src="images/stormtroopocat.png"
+          alt="Mona spacewalking with spaceship"
+          class="animate-[bounce2_5s_infinite] max-h-[160px]"
+        />
+      </div>
+      <img
+        src="images/right-cloud.png"
+        alt=""
+        class="max-h-[700px] absolute bottom-0 right-0"
+      />
+      <img
+        src="images/left-cloud.png"
+        alt=""
+        class="max-h-[650px] absolute bottom-0 left-0 z-[2]"
+      />
+    </main>
+  </body>
+</html>

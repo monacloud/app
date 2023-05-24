@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Only add custom styles below this line */
+.monacloud__wrapper {
+  background-image: url("/images/bg-stars.png");
+  background-position: center;
+  background-size: cover;
+  background-color: #0d1117;
+}
+
+.monacloud__gradient_text {
+  background: linear-gradient(92.21deg, #79c0ff 0%, #d2a8ff 57.57%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
