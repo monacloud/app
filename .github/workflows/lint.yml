@@ -32,13 +32,9 @@ jobs:
       # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
         run: npm i
+        
+      - name: Prettier
+        run: npm run format:check
 
-      - name: Run linters
-        uses: super-linter/super-linter/slim@v5
-        env:
-          DEFAULT_BRANCH: main
-          JAVASCRIPT_DEFAULT_STYLE: prettier
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
-          TYPESCRIPT_DEFAULT_STYLE: prettier
-          TYPESCRIPT_ES_CONFIG_FILE: .eslintrc.json
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: ESLint
+        run: npm run lint:check
