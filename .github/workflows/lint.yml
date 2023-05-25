@@ -34,7 +34,7 @@ jobs:
         run: npm i
 
       - name: Run linters
-        uses: super-linter/super-linter@v5
+        uses: super-linter/super-linter/slim@v5
         env:
           DEFAULT_BRANCH: main
           JAVASCRIPT_DEFAULT_STYLE: prettier
