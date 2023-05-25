@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy on merge
 
 on:
   pull_request:
