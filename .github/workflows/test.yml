@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Tests
 
 on:
   # Trigger the workflow on push or pull request,
@@ -11,7 +11,7 @@ on:
     - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
