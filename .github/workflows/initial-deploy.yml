@@ -30,7 +30,7 @@ jobs:
 
   deploy:
     needs: build-and-push
-    uses: monacloud/workflows/deploy-to-cloud.yml@main
+    uses: monacloud/workflows/.github/workflows/deploy-to-cloud.yml@main
     with:
         tag: 'initial'
     secrets:
