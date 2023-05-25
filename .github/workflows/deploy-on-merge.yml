@@ -37,20 +37,14 @@ jobs:
   deploy:
     if: github.event.pull_request.merged == true
     needs: build-and-push
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Deploy
-        uses: monacloud/workflows/deploy-to-cloud.yml@main
-        with:
-          tag: ${{ github.sha }}
-        secrets:
-          AZURE_KUBECONFIG: ${{ secrets.AZURE_KUBECONFIG }}
-          AZURE_CLUSTER_NAME: ${{ secrets.AZURE_CLUSTER_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }} 
+    uses: monacloud/workflows/deploy-to-cloud.yml@main
+    with:
+      tag: ${{ github.sha }}
+    secrets:
+      AZURE_KUBECONFIG: ${{ secrets.AZURE_KUBECONFIG }}
+      AZURE_CLUSTER_NAME: ${{ secrets.AZURE_CLUSTER_NAME }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }} 
