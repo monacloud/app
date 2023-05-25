@@ -1,15 +1,12 @@
-# Stage 1: Builder image used to build the app
+# Start with base Docker image
 FROM node:18
 WORKDIR /usr/src/app
 
-# Install required package
-COPY package.json .
-RUN npm install
-
+# Copy the entire app to the container
 COPY . .
 
-# Build the server
-RUN npm run build
+# Install all dependencies and build the app
+RUN npm install && npm run build
 
 # Start the app 
 EXPOSE 8080

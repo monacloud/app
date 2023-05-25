@@ -9,7 +9,9 @@ provider "azurerm" {
 }
 
 # Configure the GitHub Provider with GITHUB_TOKEN environment variable
-provider "github" {}
+provider "github" {
+  owner = "monacloud"
+}
 
 # Create a resource group to hold Kubernetes resources
 resource "azurerm_resource_group" "default" {
@@ -18,8 +20,8 @@ resource "azurerm_resource_group" "default" {
 
   tags = {
     Environment = "demo"
-    GitHubOrg   = "mvkaran"
-    GitHubRepo  = "monacloud"
+    GitHubOrg   = "monacloud"
+    GitHubRepo  = "app"
     ProvisionedBy = "terraform"
   }
 }
@@ -50,8 +52,8 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   tags = {
     Environment = "demo"
-    GitHubOrg   = "mvkaran"
-    GitHubRepo  = "monacloud"
+    GitHubOrg   = "monacloud"
+    GitHubRepo  = "app"
     ProvisionedBy = "terraform"
   }
 }
@@ -66,7 +68,7 @@ resource "github_repository_environment" "repo_environment" {
 resource "github_actions_environment_secret" "kubeconfig" {
   repository       = data.github_repository.repo.name
   environment      = github_repository_environment.repo_environment.environment
-  secret_name      = "KUBECONFIG"
+  secret_name      = "AZURE_KUBECONFIG"
   plaintext_value  = azurerm_kubernetes_cluster.default.kube_config_raw
 }
 
@@ -74,6 +76,6 @@ resource "github_actions_environment_secret" "kubeconfig" {
 resource "github_actions_environment_secret" "cluster_name" {
   repository       = data.github_repository.repo.name
   environment      = github_repository_environment.repo_environment.environment
-  secret_name      = "CLUSTER_NAME"
+  secret_name      = "AZURE_CLUSTER_NAME"
   plaintext_value  = azurerm_kubernetes_cluster.default.name
 }

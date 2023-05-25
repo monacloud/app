@@ -24,5 +24,16 @@ terraform {
       source  = "integrations/github"
       version = "~> 4.0"
     }
+
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = "2.10.0"
+    }
+
+    env = {
+      source = "tchupp/env"
+      version = "0.0.2"
+    }
+
   }
 }

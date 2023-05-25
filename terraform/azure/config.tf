@@ -4,7 +4,7 @@ resource "random_string" "suffix" {
 }
 
 data "github_repository" "repo" {
-  full_name = "mvkaran/monacloud"
+  full_name = "monacloud/app"
 }
 
 variable "appId" {
@@ -25,6 +25,6 @@ variable "subscriptionId" {
 
 locals {
   cluster_name = "tf-monacloud-${random_string.suffix.result}"
-  cluster_version = "1.21.1"
-  github_env = "azure"
+  cluster_version = "1.26.0"
+  github_env = "production"
 }

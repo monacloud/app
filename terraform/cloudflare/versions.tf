@@ -4,15 +4,11 @@ terraform {
     organization = "mvkaran"
 
     workspaces {
-      name = "monacloud-gcp"
+      name = "monacloud-cloudflare"
     }
   }
 
   required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "3.63.0"
-    }
 
     github = {
       source  = "integrations/github"

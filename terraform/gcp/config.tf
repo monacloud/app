@@ -16,12 +16,16 @@ variable "project_id" {
 
 
 data "github_repository" "repo" {
-  full_name = "mvkaran/monacloud"
+  full_name = "monacloud/app"
+}
+
+data "env_variable" "gcp_service_account" {
+  name = "GCP_SERVICE_ACCOUNT"
 }
 
 locals {
   cluster_name = "tf-monacloud-${random_string.suffix.result}"
   region = "us-central1"
   zone = "us-central1-a"
-  github_env = "google-cloud"
+  github_env = "staging"
 }
