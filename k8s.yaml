@@ -21,7 +21,7 @@ spec:
           image: ghcr.io/monacloud/app:initial
           ports:
             - name: webserver
-              containerPort: 3000
+              containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -34,4 +34,4 @@ spec:
   ports:
   - name:  http
     port:  80
-    targetPort:  3000
+    targetPort:  8080
