@@ -60,12 +60,3 @@ resource "github_actions_environment_secret" "cluster_name" {
   secret_name      = "CLUSTER_NAME"
   plaintext_value  = local.cluster_name
 }
-
-# Upsert GCP service account key in the environment to be used by Actions workflows
-resource "github_actions_environment_secret" "gcp_service_account" {
-  repository       = data.github_repository.repo.name
-  environment      = github_repository_environment.repo_environment.environment
-  secret_name      = "GCP_SERVICE_ACCOUNT"
-  plaintext_value  = data.env_variable.gcp_service_account.value
-}
-

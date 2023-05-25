@@ -14,13 +14,8 @@ variable "project_id" {
   description = "project id"
 }
 
-
 data "github_repository" "repo" {
   full_name = "monacloud/app"
-}
-
-data "env_variable" "gcp_service_account" {
-  name = "GCP_SERVICE_ACCOUNT"
 }
 
 locals {

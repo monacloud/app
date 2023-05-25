@@ -76,6 +76,6 @@ resource "github_actions_environment_secret" "kubeconfig" {
 resource "github_actions_environment_secret" "cluster_name" {
   repository       = data.github_repository.repo.name
   environment      = github_repository_environment.repo_environment.environment
-  secret_name      = "AZURE_CLUSTER_NAME"
+  secret_name      = "CLUSTER_NAME"
   plaintext_value  = azurerm_kubernetes_cluster.default.name
 }

@@ -42,7 +42,7 @@ jobs:
       tag: ${{ github.sha }}
     secrets:
       AZURE_KUBECONFIG: ${{ secrets.AZURE_KUBECONFIG }}
-      AZURE_CLUSTER_NAME: ${{ secrets.AZURE_CLUSTER_NAME }}
+      CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}

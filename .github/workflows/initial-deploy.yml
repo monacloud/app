@@ -32,12 +32,12 @@ jobs:
 
   deploy:
     needs: build-and-push
-    uses: monacloud/app/.github/workflows/deploy-to-cloud.yml@main
+    uses: monacloud/workflows/.github/workflows/deploy-to-cloud.yml@main
     with:
         tag: 'initial'
     secrets:
         AZURE_KUBECONFIG: ${{ secrets.AZURE_KUBECONFIG }}
-        AZURE_CLUSTER_NAME: ${{ secrets.AZURE_CLUSTER_NAME }}
+        CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
