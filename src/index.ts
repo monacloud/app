@@ -2,6 +2,7 @@ import express from "express";
 import ejs from "ejs";
 import path from "node:path";
 import dotenv from "dotenv";
+import { homeController } from "./controllers";
 
 dotenv.config();
 
@@ -17,9 +18,7 @@ const main = async () => {
   app.set("view engine", ejs);
   app.use(express.static(path.join(__dirname, "../public")));
 
-  app.get("/", (_req, res) => {
-    return res.render("pages/index.ejs");
-  });
+  app.get("/", homeController);
 
   app.listen(PORT, HOST, () => {
     console.log(`Server Running at https://${HOST}:${PORT}`);
