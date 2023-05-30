@@ -7,40 +7,54 @@ jobs:
   
   assign-issue:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
       - name: Run Issue form parser
         id: parse
         uses: peter-murray/issue-forms-body-parser@v2.0.0
         with:
           issue_id: ${{ github.event.issue.number }}
-          label_marker_start: '>>'
-          label_marker_end: '<<'
+          label_marker_start: '_'
+          label_marker_end: '_'
 
       - name: Assign to @mvkaran if the request is related to Text or Infrastructure
         uses: pozil/auto-assign-issue@v1
-        if: ${{ steps.parse.outputs.payload.feature == "Text" || steps.parse.outputs.payload.feature == "Infrastructure" }}
+        if: ${{ fromJSON(steps.parse.outputs.payload)['Feature/Area'] == 'Text' || fromJSON(steps.parse.outputs.payload)['Feature/Area'] == 'Infrastructure' }}
         with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           assignees: mvkaran
       - name: Assign to @AbhinavRajesh if the request is related to UI/UX
         uses: pozil/auto-assign-issue@v1
-        if: ${{ steps.parse.outputs.payload.feature == "UI/UX" }}
+        if: ${{ fromJSON(steps.parse.outputs.payload)['Feature/Area'] == 'UI/UX' }}
         with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           assignees: AbhinavRajesh
       - name: Assign to @pierluigi if the request is related to UI/UX
         uses: pozil/auto-assign-issue@v1
-        if: ${{ steps.parse.outputs.payload.feature == "Logic" }}
+        if: ${{ fromJSON(steps.parse.outputs.payload)['Feature/Area'] == 'Logic' }}
         with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           assignees: pierluigi
       - name: Label priority if specified in the issue
         uses: actions/github-script@v6
-        if: ${{ steps.parse.outputs.payload.priority }}
+        if: ${{ fromJSON(steps.parse.outputs.payload)['Priority'] }}
         with:
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ["${{ steps.parse.outputs.payload.priority }}"]
+              labels: ["${{ fromJSON(steps.parse.outputs.payload)['Priority'] }}"]
             })
-          
-          
+      - name: Label Feature/Area of the request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["${{ fromJSON(steps.parse.outputs.payload)['Feature/Area'] }}"]
+            })
