@@ -1,0 +1,49 @@
+name: Update Request
+description: Request for an update in monacloud app
+title: "[Request]: "
+labels: ["update-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this update request!
+  - type: input
+    id: brief_description
+    attributes:
+      label: Brief description of update
+      description: Single line text
+      placeholder: A brief description of the update request
+    validations:
+      required: true
+  - type: dropdown
+    id: feature
+    attributes:
+      label: Feature/Area
+      description: What category does your request fall under
+      options:
+        - Text
+        - UI/UX
+        - Logic
+        - Infrastructure
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Priority of this request
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of update needed
+      description: Description of update needed
+      placeholder: Tell us in detail on what this request is about
+    validations:
+      required: true
