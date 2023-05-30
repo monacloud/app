@@ -1,0 +1,47 @@
+name: Assign new issue
+
+on:
+  issues:
+    types: [opened]
+jobs:
+  
+  assign-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Issue form parser
+        id: parse
+        uses: peter-murray/issue-forms-body-parser@v2.0.0
+        with:
+          issue_id: ${{ github.event.issue.number }}
+          separator: '###'
+          label_marker_start: '>>'
+          label_marker_end: '<<'
+
+      - name: Assign to @mvkaran if the request is related to Text or Infrastructure
+        uses: pozil/auto-assign-issue@v1
+        if: steps.parse.outputs.payload.feature == "Text" || steps.parse.outputs.payload.feature == "Infrastructure"
+        with:
+          assignees: mvkaran
+      - name: Assign to @AbhinavRajesh if the request is related to UI/UX
+        uses: pozil/auto-assign-issue@v1
+        if: steps.parse.outputs.payload.feature == "UI/UX"
+        with:
+          assignees: AbhinavRajesh
+      - name: Assign to @pierluigi if the request is related to UI/UX
+        uses: pozil/auto-assign-issue@v1
+        if: steps.parse.outputs.payload.feature == "Logic"
+        with:
+          assignees: pierluigi
+      - name: Label priority if specified in the issue
+        uses: actions/github-script@v6
+        if: steps.parse.outputs.payload.priority
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["${{ steps.parse.outputs.payload.priority }}"]
+            })
+          
+          
