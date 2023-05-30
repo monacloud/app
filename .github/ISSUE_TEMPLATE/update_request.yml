@@ -10,7 +10,7 @@ body:
   - type: input
     id: brief_description
     attributes:
-      label: Brief description of update
+      label: _Brief description of update_
       description: Single line text
       placeholder: A brief description of the update request
     validations:
@@ -18,7 +18,7 @@ body:
   - type: dropdown
     id: feature
     attributes:
-      label: Feature/Area
+      label: _Feature/Area_
       description: What category does your request fall under
       options:
         - Text
@@ -30,7 +30,7 @@ body:
   - type: dropdown
     id: priority
     attributes:
-      label: Priority
+      label: _Priority_
       description: Priority of this request
       options:
         - P0
@@ -42,7 +42,7 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description of update needed
+      label: _Description of update needed_
       description: Description of update needed
       placeholder: Tell us in detail on what this request is about
     validations:
